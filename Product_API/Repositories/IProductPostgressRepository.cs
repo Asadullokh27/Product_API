@@ -6,7 +6,7 @@ namespace Product_API.Repositories
     {
         public Product Add(Product product)
         {
-            throw new NotImplementedException();
+            return new Product();
         }
 
         public List<Product> GetAll()
