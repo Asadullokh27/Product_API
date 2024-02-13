@@ -11,7 +11,7 @@ namespace Product_API.Repositories
 
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return new List<Product>();
         }
     }
 }
