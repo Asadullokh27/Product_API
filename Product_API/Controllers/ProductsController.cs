@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Product_API.Models;
+using Product.Domain.Entities;
 using Product_API.Repositories;
 
 namespace Product_API.Controllers
@@ -22,7 +22,7 @@ namespace Product_API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostProduct(Product product)
+        public async Task<IActionResult> PostProduct(ProductModel product)
         {
             return Ok(_repository.Add(product));
         }

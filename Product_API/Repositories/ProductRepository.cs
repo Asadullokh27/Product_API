@@ -1,5 +1,5 @@
 using Npgsql;
-using Product_API.Models;
+using Product.Domain.Entities;
 
 namespace Product_API.Repositories
 {
@@ -12,7 +12,7 @@ namespace Product_API.Repositories
             _connectionString = configuration.GetConnectionString("PostgresConnection");
         }
 
-        public Product Add(Product product)
+        public Product.Domain.Entities.ProductModel Add(Product.Domain.Entities.ProductModel product)
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
@@ -26,7 +26,7 @@ namespace Product_API.Repositories
             }
         }
 
-        public List<Product> GetAll()
+        public List<Product.Domain.Entities.ProductModel> GetAll()
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
@@ -36,10 +36,10 @@ namespace Product_API.Repositories
 
                 var datareader = command.ExecuteReader();
 
-                List<Product> products = new List<Product>();
+                List<Product.Domain.Entities.ProductModel> products = new List<ProductModel>();
                 while (datareader.Read())
                 {
-                    var product = new Product()
+                    var product = new ProductModel()
                     {
                         Id = Convert.ToInt32(datareader[0]),
                         Name = Convert.ToString(datareader[1]),

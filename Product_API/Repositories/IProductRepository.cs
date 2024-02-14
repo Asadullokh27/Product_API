@@ -1,10 +1,10 @@
-﻿using Product_API.Models;
+﻿using Product.Domain.Entities;
 
 namespace Product_API.Repositories
 {
     public interface IProductRepository
     {
-        Product Add(Product product);
-        List<Product> GetAll();
+        ProductModel Add(ProductModel product);
+        List<ProductModel> GetAll();
     }
 }
