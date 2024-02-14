@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Product.Domain.Entities;
-using Product_API.Repositories;
+using Product_API.Infrastructure.Repositories;
 
 namespace Product_API.Controllers
 {

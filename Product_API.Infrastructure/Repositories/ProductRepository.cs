@@ -1,15 +1,15 @@
 using Npgsql;
 using Product.Domain.Entities;
 
-namespace Product_API.Repositories
+namespace Product_API.Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository
     {
         private readonly string _connectionString;
 
-        public ProductRepository(IConfiguration configuration)
+        public ProductRepository()
         {
-            _connectionString = configuration.GetConnectionString("PostgresConnection");
+            _connectionString = "Server = localhost; Port = 5432; Database = ProductAPI; Username = postgres; Password = sardor0618!";
         }
 
         public Product.Domain.Entities.ProductModel Add(Product.Domain.Entities.ProductModel product)
