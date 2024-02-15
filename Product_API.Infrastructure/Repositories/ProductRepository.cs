@@ -1,3 +1,4 @@
+using MyDapper;
 using Npgsql;
 using Product.Domain.Entities;
 
@@ -30,25 +31,8 @@ namespace Product_API.Infrastructure.Repositories
         {
             using (var connection = new NpgsqlConnection(_connectionString))
             {
-                connection.Open();
-
-                NpgsqlCommand command = new NpgsqlCommand("select * from Products", connection);
-
-                var datareader = command.ExecuteReader();
-
-                List<Product.Domain.Entities.ProductModel> products = new List<ProductModel>();
-                while (datareader.Read())
-                {
-                    var product = new ProductModel()
-                    {
-                        Id = Convert.ToInt32(datareader[0]),
-                        Name = Convert.ToString(datareader[1]),
-                        Description = Convert.ToString(datareader[2]),
-                        PhotoPath = Convert.ToString(datareader[3]),
-                    };
-
-                    products.Add(product);
-                }
+                var query = "Select * from Products";
+                var products = connection.Query<ProductModel>(query);
 
                 return products;
             }
